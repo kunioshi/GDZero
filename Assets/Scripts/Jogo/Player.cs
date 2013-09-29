@@ -5,7 +5,7 @@ public class Player : MonoBehaviour {
 	private string playerClass = "Archer";
 	private int maxHealth = 100;
 	private int currentHealth = 100;
-	private int maxMana = 500;
+	private int maxMana = 300;
 	private int currentMana = 0;
 	private int totalKills = 0;
 	
