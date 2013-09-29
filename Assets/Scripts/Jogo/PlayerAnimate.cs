@@ -8,51 +8,49 @@ public class PlayerAnimate : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		//Player player = GetComponent<Player>();
-			
+	void Update () {			
 		float horizontalInput = Input.GetAxis("Horizontal");
 		if (horizontalInput == 0)
-			DefinirAnimacaoParado();
+			SetAnimationStop();
 		else
-			DefinirAnimacaoCorrendo();	
+			SetAnimationRunning();	
 		
 		if (Input.GetButton("Jump"))
-			DefinirAnimacaoPulando();
+			SetAnimationJumping();
 	
 		if (Input.GetButton("Fire1"))
-			DefinirAnimacaoAtacando();
+			SetAnimationAttack();
 		
 		if (Input.GetButton("Fire2"))
-			DefinirAnimacaoEspecial();
+			SetAnimationDoSpecialAttack();
 	}
 
-	private void DefinirAnimacaoParado()
+	private void SetAnimationStop()
 	{
-		DefinirAnimaca(0, 1);
+		SetAnimation(0, 1);
 	}
 	
-	private void DefinirAnimacaoCorrendo() 
+	private void SetAnimationRunning() 
 	{
-		DefinirAnimaca(1, 8);
+		SetAnimation(1, 8);
 	}
 	
-	private void DefinirAnimacaoPulando() 
+	private void SetAnimationJumping() 
 	{
-		DefinirAnimaca(2, 5);
+		SetAnimation(2, 5);
 	}
 	
-	private void DefinirAnimacaoAtacando() 
+	private void SetAnimationAttack() 
 	{
-		DefinirAnimaca(4, 6);
+		SetAnimation(4, 6);
 	}
 	
-	private void DefinirAnimacaoEspecial() 
+	private void SetAnimationDoSpecialAttack() 
 	{
-		DefinirAnimaca(3, 5);
+		SetAnimation(3, 5);
 	}
 	
-	private void DefinirAnimaca(int rowIndex, int totalCellsOfRow) 
+	private void SetAnimation(int rowIndex, int totalCellsOfRow) 
 	{
 		AnimateTexture animateTexture = GetComponent<AnimateTexture>();
 		animateTexture.RowIndex = rowIndex;

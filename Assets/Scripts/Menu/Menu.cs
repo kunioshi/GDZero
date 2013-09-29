@@ -4,30 +4,31 @@ using System.Collections;
 //TODO: Mover para proprio arquivo
 public class NetworkHelper
 {
-	private int maxConexao = 4;
-	private int porta = 25001;	
+	private int maxConnections = 4;
+	private int port = 25001;
+	private bool useNat = false;
 
-	public bool IniciarServidor()
+	public bool InitializeServer()
 	{
-		DesconectarSePreciso();
+		DisconnectIfNeed();
 		
-		NetworkConnectionError retorno = Network.InitializeServer(maxConexao, porta);
+		NetworkConnectionError retorno = Network.InitializeServer(maxConnections, port, useNat);
 		
 		//TODO: ver se conectou ou deu erro
 		return retorno == NetworkConnectionError.NoError;
 	}
 	
-	public bool ConectarServidor(string IP)
+	public bool Connect(string IP)
 	{	
-		DesconectarSePreciso();
+		DisconnectIfNeed();
 		
-		NetworkConnectionError retorno = Network.Connect(IP, porta);
+		NetworkConnectionError retorno = Network.Connect(IP, port);
 		
 		//TODO: Tratar erro
 		return retorno == NetworkConnectionError.NoError;		
 	}
 	
-	private void DesconectarSePreciso()
+	private void DisconnectIfNeed()
 	{
 		if (Network.peerType != NetworkPeerType.Disconnected)
 			Network.Disconnect();
@@ -42,7 +43,7 @@ public class Menu : MonoBehaviour
 	{
     	if (Input.GetKey(KeyCode.Escape))
     	{
-    	    Sair();
+    	    Quit();
 	    }
 	}
  
@@ -50,43 +51,42 @@ public class Menu : MonoBehaviour
 	void OnGUI()
 	{
 		if (GUI.Button(new Rect(100, 100, 500, 50), "Criar Jogo Local"))
-			CriarJogoLocal();
+			CreateLocalGame();
 		
 		if (GUI.Button(new Rect(100, 200, 500, 50), "Criar Servidor"))
-			CriarServidor();
+			CreateServer();
 		
 		if (GUI.Button(new Rect(100, 300, 500, 50), "Conectar a um jogo"))
-			ConectarUmJogo();
+			JoinGame();
 		
 		if (GUI.Button(new Rect(100, 400, 500, 50), "Sair"))
-			Sair();
+			Quit();
 		
 		GUI.Label(new Rect(1, 1, 100, 25), Network.peerType.ToString());			
 	}
 	
-	private void CriarJogoLocal()
+	private void CreateLocalGame()
 	{
-		AbrirJogo();
+		LoadGame();
 	}
 	
-	private void CriarServidor()
+	private void CreateServer()
 	{
-		new NetworkHelper().IniciarServidor();
+		new NetworkHelper().InitializeServer();
 	}
 	
-	private void ConectarUmJogo()
+	private void JoinGame()
 	{
 		string localHost = "127.0.0.1";
-		if (new NetworkHelper().ConectarServidor(localHost))
-			GUI.Label(new Rect(1, 500, 100, 25), "Deu erro");
+		new NetworkHelper().Connect(localHost);
 	}
 	
-	private void Sair()
+	private void Quit()
 	{
 		Application.Quit();
 	}
 	
-	private void AbrirJogo()
+	private void LoadGame()
 	{
 		Application.LoadLevel("Fase1");
 	}

@@ -13,14 +13,14 @@ public class AnimateTexture : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		SpriteAnimation();
 	}
-	
+
 	private void SpriteAnimation()
 	{
 		int index = CalculateIndex();
@@ -30,30 +30,30 @@ public class AnimateTexture : MonoBehaviour
 		SetOffset(offset);
 		SetSize(size);
 	}
-	
+
 	private int CalculateIndex()
 	{
 		return ((int)(Time.time * Fps)) % TotalCellsOfRow;
 	}
-	
+
 	private Vector2 CalculateSize()
 	{
 		return new Vector2(1.0f / ColumnCount, 1.0f / RowCount);
 	}
-	
+
 	private Vector2 CalculateOffset(int index, Vector2 size)
 	{
 		float horizontalIndex = index % ColumnCount;	
 		float verticalIndex = index / ColumnCount;
-		
+
 		return new Vector2((float)((horizontalIndex + ColumnIndex) * size.x), (float)((1.0 - size.y) - (verticalIndex + RowIndex) * size.y));
 	}
-	
+
 	private void SetOffset(Vector2 offset)
 	{
 		renderer.material.SetTextureOffset("_MainTex", offset);
 	}
-	
+
 	private void SetSize(Vector2 size)
 	{
 		renderer.material.SetTextureScale("_MainTex", size);
