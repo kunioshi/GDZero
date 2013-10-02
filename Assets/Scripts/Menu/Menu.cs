@@ -50,24 +50,32 @@ public class Menu : MonoBehaviour
 
 	void OnGUI()
 	{
-		if (GUI.Button(new Rect(100, 100, 500, 50), "Criar Jogo Local"))
-			CreateLocalGame();
+		if (GUI.Button(new Rect(100, 100, 500, 50), "Criar Jogo Local - Fase 1"))
+			CreateLocalGameFase1();
+
+		if (GUI.Button(new Rect(100, 200, 500, 50), "Criar Jogo Local - Fase 2"))
+			CreateLocalGameFase2();
 		
-		if (GUI.Button(new Rect(100, 200, 500, 50), "Criar Servidor"))
+		if (GUI.Button(new Rect(100, 300, 500, 50), "Criar Servidor"))
 			CreateServer();
 		
-		if (GUI.Button(new Rect(100, 300, 500, 50), "Conectar a um jogo"))
+		if (GUI.Button(new Rect(100, 400, 500, 50), "Conectar a um jogo"))
 			JoinGame();
 		
-		if (GUI.Button(new Rect(100, 400, 500, 50), "Sair"))
+		if (GUI.Button(new Rect(100, 500, 500, 50), "Sair"))
 			Quit();
 		
 		GUI.Label(new Rect(1, 1, 100, 25), Network.peerType.ToString());			
 	}
 	
-	private void CreateLocalGame()
+	private void CreateLocalGameFase1()
 	{
-		LoadGame();
+		LoadGame("Fase1");
+	}
+
+	private void CreateLocalGameFase2()
+	{
+		LoadGame("Fase2");
 	}
 	
 	private void CreateServer()
@@ -86,8 +94,8 @@ public class Menu : MonoBehaviour
 		Application.Quit();
 	}
 	
-	private void LoadGame()
+	private void LoadGame(string fase)
 	{
-		Application.LoadLevel("Fase1");
+		Application.LoadLevel(fase);
 	}
 }

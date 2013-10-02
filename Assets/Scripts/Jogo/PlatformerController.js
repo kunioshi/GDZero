@@ -249,6 +249,11 @@ function UpdateEffects () {
 }
  
 function Update () {
+
+    if (Input.GetKey(KeyCode.Escape)) {
+    	Quit();
+	}
+	
 	if (Input.GetButtonDown ("Jump") && canControl) {
 		jump.lastButtonTime = Time.time;
 	}
@@ -371,6 +376,10 @@ function Reset () {
  
 function SetControllable (controllable : boolean) {
 	canControl = controllable;
+}
+
+function Quit() {
+	Application.LoadLevel("Menu");
 }
  
 // Require a character controller to be attached to the same game object

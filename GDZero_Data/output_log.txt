@@ -1,11 +1,11 @@
-Initialize engine version: 4.2.1f4 (4d30acc925c2)
+Initialize engine version: 4.3.0b1 (d4d9149be147)
 GfxDevice: creating device client; threaded=1
 Direct3D:
-    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.1106]
+    Version:  Direct3D 9.0c [nvd3dum.dll 9.18.13.2723]
     Renderer: NVIDIA GeForce GTS 250
     Vendor:   NVIDIA
     VRAM:     1390 MB (via DXGI)
-    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
 Begin MonoManager ReloadAssembly
 Platform assembly: C:\Users\Lucas\Documents\GitHub\GDZero\GDZero_Data\Managed\UnityEngine.dll (this message is harmless)
 Loading C:\Users\Lucas\Documents\GitHub\GDZero\GDZero_Data\Managed\UnityEngine.dll into Unity Child Domain
@@ -13,7 +13,20 @@ Platform assembly: C:\Users\Lucas\Documents\GitHub\GDZero\GDZero_Data\Managed\As
 Loading C:\Users\Lucas\Documents\GitHub\GDZero\GDZero_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Lucas\Documents\GitHub\GDZero\GDZero_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
 Loading C:\Users\Lucas\Documents\GitHub\GDZero\GDZero_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.052 seconds
+- Completed reload, in  0.074 seconds
 desktop: 1920x1080 59Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
+UnloadTime: 0.214078 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 73.
+Total: 0.760147 ms (FindLiveObjects: 0.007815 ms CreateObjectMapping: 0.010194 ms MarkObjects: 0.055728 ms  DeleteObjects: 0.004077 ms)
+
+UnloadTime: 0.270146 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 274.
+Total: 0.809079 ms (FindLiveObjects: 0.018349 ms CreateObjectMapping: 0.014271 ms MarkObjects: 0.118592 ms  DeleteObjects: 0.003737 ms)
+
+Platform assembly: C:\Users\Lucas\Documents\GitHub\GDZero\GDZero_Data\Managed\Boo.Lang.dll (this message is harmless)
