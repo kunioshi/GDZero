@@ -1,0 +1,19 @@
+Warrior - Running
+-12 frames
+-111x156
+
+Warrior - Ataque Frente
+-5 frames
+-140x152
+
+Warrior - Ataque Cima
+-5 frames
+-81x189
+
+Warrior - Jump Start
+-5 frames
+-95x151 (12px borda do pé)
+
+Warrior - Jump End
+-5 frames
+-95x151 (12px borda do pé)
