@@ -1,0 +1,4 @@
+Todas as imagens de todas as stripes tem dimenção de: 140x187 px
+Com distancia da borda de baixo com o pé de: 26 px
+
+Frame rate recomendado: 18f/s
