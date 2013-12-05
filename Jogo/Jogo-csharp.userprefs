@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Jogo\LoadPlayer.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Jogo\LoadPlayer.cs" Line="6" Column="34" />
+      <File FileName="Assets\Scripts\Network\CreateServer.cs" Line="52" Column="16" />
+      <File FileName="Assets\Scripts\Network\JoinGame.cs" Line="33" Column="1" />
+      <File FileName="Assets\Scripts\Jogo\Player.cs" Line="96" Column="3" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
