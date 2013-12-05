@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	private int currentMana = 0;
 	private int totalKills = 0;
 	
+	private bool isJumping = false;
 	private bool isAttacking = false;
 	private bool isSpecialAttacking = false;
 	
@@ -18,36 +19,89 @@ public class Player : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		isAttacking = false;
-		isSpecialAttacking = false;
-		
-		if (Input.GetButtonUp("Fire1"))
-			DoAttack();
-		else if (Input.GetButtonUp("Fire2"))
-			DoSpecialAttack();
+	void Update () 
+	{
+		isJumping = false;
+     	isAttacking = false;
+     	isSpecialAttacking = false;
+
+		if (Network.isServer && this.tag == "Player1"
+		    || Network.isClient && this.tag == "Player2")
+		{
+			PlayerInput playerInput = new PlayerInput();
+
+			if (Input.GetKey(KeyCode.W))
+				playerInput.Up = true;
+			
+			if (Input.GetKey(KeyCode.S))
+				playerInput.Down = true;
+			
+			if (Input.GetKey(KeyCode.D))
+				playerInput.Right = true;
+			
+			if (Input.GetKey(KeyCode.A))
+				playerInput.Left = true;
+
+			ChangePlayerInput(playerInput);
+		}
 	}	
 	
-	void OnGUI() {
+	void OnGUI() 
+	{
 		GUI.Box(new Rect(1, 1, 125, 20), string.Format("{0} - {1}", name, playerClass));
 		GUI.Box(new Rect(1, 25, 125, 20), string.Format("Life: {0} / {1}", currentHealth, maxHealth));
 		GUI.Box(new Rect(1, 50, 125, 20), string.Format("Mana: {0} / {1}", currentMana, maxMana));
 		GUI.Box(new Rect(1, 75, 125, 20), string.Format("Kills: {0}", totalKills));
 	}
+
+	//[RPC] 
+	public void ChangePlayerInput(PlayerInput playerInput)
+	{
+		if (playerInput.Up)
+			rigidbody.MovePosition(rigidbody.position + Vector3.forward * 10f * Time.deltaTime);
+		
+		if (playerInput.Down)
+			rigidbody.MovePosition(rigidbody.position - Vector3.forward * 10f * Time.deltaTime);
+		
+		if (playerInput.Left)
+			rigidbody.MovePosition(rigidbody.position + Vector3.right * 10f * Time.deltaTime);
+		
+		if (playerInput.Right)
+			rigidbody.MovePosition(rigidbody.position - Vector3.right * 10f * Time.deltaTime);
+
+		if (playerInput.Jump)
+			DoJumping();
+		
+		if (playerInput.Attack)
+			DoAttack();
+		
+		if (playerInput.SpecialAttack)
+			DoSpecialAttack();
+
+		//if (networkView.isMine)
+		//	networkView.RPC("ChangePlayerInput", RPCMode.All, playerInput);
+	}
 	
-	private void DoAttack() {
+	private void DoJumping()
+	{
+		isJumping = false;
+	}
+	
+	private void DoAttack() 
+	{
 		isAttacking = true;
 		currentMana++;
 	}
 	
-	private void DoSpecialAttack() {
+	private void DoSpecialAttack() 
+	{
 		isSpecialAttacking = true;
 		currentMana = 0;
 	}
 	
 	public bool IsJumping()
 	{
-		return false;
+		return isJumping;
 	}
 	
 	public bool IsAttacking()

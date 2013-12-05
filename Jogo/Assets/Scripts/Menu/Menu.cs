@@ -50,22 +50,28 @@ public class Menu : MonoBehaviour
 
 	void OnGUI()
 	{
-		if (GUI.Button(new Rect(100, 100, 500, 50), "Criar Jogo Local - Fase 1"))
-			CreateLocalGameFase1();
+		if (GUI.Button(new Rect(100, 100, 500, 50), "Criar Servidor"))
+			CreateServer();			
 
-		if (GUI.Button(new Rect(100, 200, 500, 50), "Criar Jogo Local - Fase 2"))
+		if (GUI.Button(new Rect(100, 200, 500, 50), "Conectar a um jogo"))
+			JoinGame();			
+		
+		if (GUI.Button(new Rect(100, 300, 500, 50), "Fase Prototipo"))
+			CreateLocalGamePrototipo();
+		
+		if (GUI.Button(new Rect(100, 400, 500, 50), "Fase Beta 1"))
+			CreateLocalGameFase1();			
+		
+		if (GUI.Button(new Rect(100, 500, 500, 50), "Fase Beta 2"))
 			CreateLocalGameFase2();
-		
-		if (GUI.Button(new Rect(100, 300, 500, 50), "Criar Servidor"))
-			CreateServer();
-		
-		if (GUI.Button(new Rect(100, 400, 500, 50), "Conectar a um jogo"))
-			JoinGame();
-		
-		if (GUI.Button(new Rect(100, 500, 500, 50), "Sair"))
-			Quit();
-		
-		GUI.Label(new Rect(1, 1, 100, 25), Network.peerType.ToString());			
+
+		if (GUI.Button(new Rect(100, 600, 500, 50), "Sair"))
+			Quit();					
+	}
+	
+	private void CreateLocalGamePrototipo()
+	{
+		LoadGame("FasePrototipo");
 	}
 	
 	private void CreateLocalGameFase1()
@@ -80,13 +86,12 @@ public class Menu : MonoBehaviour
 	
 	private void CreateServer()
 	{
-		new NetworkHelper().InitializeServer();
+		LoadGame("CreateServer");
 	}
 	
 	private void JoinGame()
 	{
-		string localHost = "127.0.0.1";
-		new NetworkHelper().Connect(localHost);
+		LoadGame("JoinGame");
 	}
 	
 	private void Quit()
