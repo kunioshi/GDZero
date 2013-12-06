@@ -13,15 +13,15 @@ Platform assembly: C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\GDZero_Data\Manag
 Loading C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\GDZero_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\GDZero_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
 Loading C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\GDZero_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.076 seconds
-desktop: 1440x900 59Hz; virtual: 3360x1080 at 0,0
+- Completed reload, in  0.062 seconds
+desktop: 1440x900 59Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-UnloadTime: 0.331059 ms
+UnloadTime: 0.317285 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 78.
-Total: 1.180388 ms (FindLiveObjects: 0.006078 ms CreateObjectMapping: 0.019045 ms MarkObjects: 0.066860 ms  DeleteObjects: 0.005267 ms)
+Total: 0.644700 ms (FindLiveObjects: 0.006078 ms CreateObjectMapping: 0.014182 ms MarkObjects: 0.064834 ms  DeleteObjects: 0.005267 ms)
 
 Initialize engine version: 4.3.0b1 (d4d9149be147)
 GfxDevice: creating device client; threaded=1
@@ -38,51 +38,51 @@ Platform assembly: C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\GDZero_Data\Manag
 Loading C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\GDZero_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\GDZero_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
 Loading C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\GDZero_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.073 seconds
-desktop: 1440x900 59Hz; virtual: 3360x1080 at 0,0
+- Completed reload, in  0.071 seconds
+desktop: 1440x900 59Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-UnloadTime: 0.353751 ms
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 116.
-Total: 1.107044 ms (FindLiveObjects: 0.006888 ms CreateObjectMapping: 0.012966 ms MarkObjects: 0.126426 ms  DeleteObjects: 0.004862 ms)
-
-UnloadTime: 0.347673 ms
+UnloadTime: 0.317690 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 78.
-Total: 1.271561 ms (FindLiveObjects: 0.006888 ms CreateObjectMapping: 0.012966 ms MarkObjects: 0.067265 ms  DeleteObjects: 0.005672 ms)
+Total: 0.995618 ms (FindLiveObjects: 0.007699 ms CreateObjectMapping: 0.020666 ms MarkObjects: 0.064429 ms  DeleteObjects: 0.005673 ms)
 
-UnloadTime: 0.370770 ms
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 146.
-Total: 1.454718 ms (FindLiveObjects: 0.009725 ms CreateObjectMapping: 0.013777 ms MarkObjects: 0.415344 ms  DeleteObjects: 0.004862 ms)
-
-UnloadTime: 0.396299 ms
+UnloadTime: 0.297024 ms
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 116.
-Total: 1.224961 ms (FindLiveObjects: 0.006483 ms CreateObjectMapping: 0.014182 ms MarkObjects: 0.127642 ms  DeleteObjects: 0.004052 ms)
+Total: 0.709940 ms (FindLiveObjects: 0.006483 ms CreateObjectMapping: 0.012561 ms MarkObjects: 0.125212 ms  DeleteObjects: 0.004457 ms)
 
-UnloadTime: 0.325792 ms
+UnloadTime: 0.321742 ms
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 148.
+Total: 0.870811 ms (FindLiveObjects: 0.008914 ms CreateObjectMapping: 0.012966 ms MarkObjects: 0.129264 ms  DeleteObjects: 0.004457 ms)
+
+UnloadTime: 0.332278 ms
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 116.
+Total: 0.761808 ms (FindLiveObjects: 0.006483 ms CreateObjectMapping: 0.013777 ms MarkObjects: 0.121159 ms  DeleteObjects: 0.004457 ms)
+
+UnloadTime: 0.332278 ms
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 112.
-Total: 1.184440 ms (FindLiveObjects: 0.006483 ms CreateObjectMapping: 0.012966 ms MarkObjects: 0.127237 ms  DeleteObjects: 0.004457 ms)
+Total: 0.687248 ms (FindLiveObjects: 0.006483 ms CreateObjectMapping: 0.012561 ms MarkObjects: 0.126833 ms  DeleteObjects: 0.004457 ms)
 
-UnloadTime: 0.323765 ms
+UnloadTime: 0.343219 ms
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
 Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 116.
-Total: 1.350578 ms (FindLiveObjects: 0.006888 ms CreateObjectMapping: 0.017018 ms MarkObjects: 0.135746 ms  DeleteObjects: 0.004457 ms)
+Total: 0.709130 ms (FindLiveObjects: 0.006888 ms CreateObjectMapping: 0.012966 ms MarkObjects: 0.128859 ms  DeleteObjects: 0.004457 ms)
 
-UnloadTime: 0.320524 ms
+UnloadTime: 0.323363 ms
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 142.
-Total: 1.394341 ms (FindLiveObjects: 0.008509 ms CreateObjectMapping: 0.014587 ms MarkObjects: 0.325386 ms  DeleteObjects: 0.007293 ms)
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 143.
+Total: 0.726149 ms (FindLiveObjects: 0.008509 ms CreateObjectMapping: 0.013777 ms MarkObjects: 0.121970 ms  DeleteObjects: 0.004457 ms)
 
 Failed Network.Instantiate because we are not connected.
  
@@ -91,4 +91,8 @@ Failed Network.Instantiate because we are not connected.
 Failed Network.Instantiate because we are not connected.
  
 (Filename:  Line: 2458)
+
+The server has disconnected from the client. Most likely the server has shut down.
+ 
+(Filename:  Line: 740)
 

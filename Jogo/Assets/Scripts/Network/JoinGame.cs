@@ -6,17 +6,6 @@ public class JoinGame : MonoBehaviour
 	private const string GameTypeName = "GDZero";
 	private NetworkManager networkManager = new NetworkManager();
 	private HostData[] _hostList = null;
-	private HostData[] hostList 
-	{
-		get
-		{
-			if (_hostList == null)
-				_hostList = networkManager.GetHostList();
-
-			return _hostList;
-		}
-	}
-
 
 	void Start() 
 	{
@@ -25,15 +14,16 @@ public class JoinGame : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (_hostList == null)
+			_hostList = networkManager.GetHostList();
 	}
 
 	void OnGUI()
 	{
-		if (hostList != null)
-			for (int i = 0; i < hostList.Length; i++)
-				if (GUI.Button(new Rect(100, 100 + (100 * i), 300, 50), hostList[i].gameName))
-					JoinServer(hostList[i]);
+		if (_hostList != null)
+			for (int i = 0; i < _hostList.Length; i++)
+				if (GUI.Button(new Rect(100, 100 + (100 * i), 300, 50), _hostList[i].gameName))
+					JoinServer(_hostList[i]);
 
 		if (GUI.Button(new Rect(500, 375, 100, 25), "Voltar"))
 			Back();

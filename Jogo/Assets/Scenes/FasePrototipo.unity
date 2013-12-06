@@ -172,7 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player1Prefab: {fileID: 100000, guid: 52aeaf5c613618f40bd73c63e84c267a, type: 2}
   Player2Prefab: {fileID: 100000, guid: 67c1229bc87e03a40b23859b40507918, type: 2}
-  SpawnPoint: {fileID: 1949686222}
+  SPPlayer1: {fileID: 1550161658}
+  SPPlayer2: {fileID: 1949686222}
 --- !u!4 &1542308386
 Transform:
   m_ObjectHideFlags: 0
@@ -181,6 +182,32 @@ Transform:
   m_GameObject: {fileID: 1542308384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!1 &1550161657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1550161658}
+  m_Layer: 0
+  m_Name: SPPlayer1
+  m_TagString: Respawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1550161658
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1550161657}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -193,7 +220,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1949686222}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: SPPlayer2
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +233,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1949686221}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 3, z: 0}
+  m_LocalPosition: {x: 3, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
