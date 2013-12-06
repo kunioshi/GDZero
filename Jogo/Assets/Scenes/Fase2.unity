@@ -198,9 +198,9 @@ Camera:
     height: 1
   near clip plane: .300000012
   far clip plane: 100
-  field of view: 60
+  field of view: 15.6137104
   orthographic: 1
-  orthographic size: 11.0730972
+  orthographic size: 13.5263233
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -217,7 +217,7 @@ Transform:
   m_GameObject: {fileID: 82291081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.234492302, y: -.859828949, z: -10}
-  m_LocalScale: {x: 1.44999993, y: 3.58812189, z: 1}
+  m_LocalScale: {x: 1.50437474, y: 2.76285172, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &114720124
@@ -512,8 +512,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 266476737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.287316799, y: -.0997309685, z: 0}
-  m_LocalScale: {x: 2.55280066, y: 2.27093172, z: 1}
+  m_LocalPosition: {x: .99866581, y: 1.2210331, z: 0}
+  m_LocalScale: {x: 2.79251981, y: 2.48418188, z: 1}
   m_Children: []
   m_Father: {fileID: 1371359109}
 --- !u!212 &266476739
@@ -950,7 +950,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_SortingLayerID: 0
   m_Sprite: {fileID: 21300000, guid: 1d434c13eb5de5849970f8d571460b14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
