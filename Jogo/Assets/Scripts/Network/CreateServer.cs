@@ -14,7 +14,7 @@ public class CreateServer : MonoBehaviour
 	}
 	
 	void OnGUI()
-	{
+	{	
 		GUI.Label(new Rect(100, 75, 500, 20), "Nome:");
 		gameName = GUI.TextField(new Rect(100, 100, 500, 20), gameName);
 		GUI.Label(new Rect(100, 125, 500, 20), "Descrição:");
