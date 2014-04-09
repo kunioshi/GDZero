@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Character.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Character.cs" Line="209" Column="19" />
+      <File FileName="C:\Users\Kunioshi\Desktop\Backup\Trabalhos - SENAC Jogos Digitais\Game Engine\Battlefield\Assets\Scripts\IATank.cs" Line="27" Column="108" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
