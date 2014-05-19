@@ -1,17 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+public enum Direction {
+	Up = 1,
+	Down = 2,
+	Right = 3,
+	Left = 4
+}
+
+public enum CharClass {
+	Warrior = 1,
+	Barbarian,
+	Paladin,
+	Thief,
+	Archer
+}
 
 public class Player : MonoBehaviour {
-	private string playerClass = "Archer";
-	private int maxHealth = 100;
-	private int currentHealth = 100;
-	private int maxMana = 500;
-	private int currentMana = 0;
+	public CharClass playerClass = CharClass.Archer;
 	private int totalKills = 0;
-	
-	private bool isJumping = false;
-	private bool isAttacking = false;
-	private bool isSpecialAttacking = false;
+	public bool Running = false;
+	public bool Jumping = false;
+	public bool Sliding = false;
+	public bool Attacking = false;
+	public bool EstaComOvo = false;
+	public bool Escudo = false;
+	public bool EscudoDuplo = false;
+	public bool Bebado = false;
+	public bool Dyieng = false;
+	public bool AttackingArrow = false;
+	public Direction Direction = Direction.Left;
+	public Animator animatorController;
 	
 	// Use this for initialization
 	void Start () {
@@ -19,98 +37,42 @@ public class Player : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
-	{
-		isJumping = false;
-     	isAttacking = false;
-     	isSpecialAttacking = false;
+	void Update () {
+		animatorController.SetInteger ("PlayerClass", (int)playerClass); 
+		animatorController.SetBool ("IsRunning", Running);
+		animatorController.SetBool ("IsJumping", Jumping);
+		animatorController.SetBool ("IsSliding", Sliding);
+		animatorController.SetBool ("IsAttacking", Attacking);
+		animatorController.SetBool ("IsDyieng", Dyieng);
+		animatorController.SetBool ("IsAttackingArrow", AttackingArrow);
+		animatorController.SetInteger ("Direction", (int)this.Direction);
 
-		if (Network.isServer && this.tag == "Player1"
-		    || Network.isClient && this.tag == "Player2")
-		{
-			PlayerInput playerInput = new PlayerInput();
-
-			if (Input.GetKey(KeyCode.W))
-				playerInput.Up = true;
-			
-			if (Input.GetKey(KeyCode.S))
-				playerInput.Down = true;
-			
-			if (Input.GetKey(KeyCode.D))
-				playerInput.Right = true;
-			
-			if (Input.GetKey(KeyCode.A))
-				playerInput.Left = true;
-
-			ChangePlayerInput(playerInput);
-		}
-	}	
-	
-	void OnGUI() 
-	{
-		GUI.Box(new Rect(1, 1, 125, 20), string.Format("{0} - {1}", name, playerClass));
-		GUI.Box(new Rect(1, 25, 125, 20), string.Format("Life: {0} / {1}", currentHealth, maxHealth));
-		GUI.Box(new Rect(1, 50, 125, 20), string.Format("Mana: {0} / {1}", currentMana, maxMana));
-		GUI.Box(new Rect(1, 75, 125, 20), string.Format("Kills: {0}", totalKills));
 	}
 
-	//[RPC] 
-	public void ChangePlayerInput(PlayerInput playerInput)
-	{
-		if (playerInput.Up)
-			rigidbody.MovePosition(rigidbody.position + Vector3.forward * 10f * Time.deltaTime);
-		
-		if (playerInput.Down)
-			rigidbody.MovePosition(rigidbody.position - Vector3.forward * 10f * Time.deltaTime);
-		
-		if (playerInput.Left)
-			rigidbody.MovePosition(rigidbody.position + Vector3.right * 10f * Time.deltaTime);
-		
-		if (playerInput.Right)
-			rigidbody.MovePosition(rigidbody.position - Vector3.right * 10f * Time.deltaTime);
+	void OnCollisionEnter (Collision collision) {
+		switch (collision.collider.tag) {
+			case "Fogo":
+				Die();
+				break;
 
-		if (playerInput.Jump)
-			DoJumping();
-		
-		if (playerInput.Attack)
-			DoAttack();
-		
-		if (playerInput.SpecialAttack)
-			DoSpecialAttack();
+			case "Ovo":
+				GetEgg(collision.gameObject);
+				break;
 
-		//if (networkView.isMine)
-		//	networkView.RPC("ChangePlayerInput", RPCMode.All, playerInput);
+			case "Item":
+				GetItem(collision.gameObject);
+				break;
+		}	
 	}
-	
-	private void DoJumping()
-	{
-		isJumping = false;
+
+	private void Die() {
 	}
-	
-	private void DoAttack() 
-	{
-		isAttacking = true;
-		currentMana++;
+
+	private void GetEgg(GameObject item) {
 	}
-	
-	private void DoSpecialAttack() 
-	{
-		isSpecialAttacking = true;
-		currentMana = 0;
+
+	private void GetItem(GameObject item) {
+
 	}
-	
-	public bool IsJumping()
-	{
-		return isJumping;
-	}
-	
-	public bool IsAttacking()
-	{
-		return isAttacking;
-	}
-	
-	public bool IsSpecialAttacking()
-	{
-		return isSpecialAttacking;
-	}
+
 }

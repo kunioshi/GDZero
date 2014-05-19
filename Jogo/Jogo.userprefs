@@ -1,18 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Warrior\Scripts\Character.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Jogo\MovendoBolaFogo.js">
     <Files>
-      <File FileName="Assets\Warrior\Scripts\Character.cs" Line="1" Column="1" />
-      <File FileName="Assets\Warrior\Scripts\Character.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Network\MenuNetwork.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Network\CreateServer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Network\JoinGame.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Jogo\PlayerControl.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Jogo\Timer.js" Line="52" Column="20" />
+      <File FileName="Assets\Scripts\Jogo\MovendoBolaFogo.js" Line="19" Column="1" />
       <File FileName="Assets\Scripts\Jogo\Player.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Lucas\Documents\GitHub\GDZero\Jogo\Assets\Scripts\Jogo\Player.cs" line="67" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
