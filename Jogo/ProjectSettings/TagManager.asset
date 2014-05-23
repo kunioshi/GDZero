@@ -3,15 +3,17 @@
 --- !u!78 &1
 TagManager:
   tags:
-  - Player
-  - Ovo
-  - Item
-  - Fogo
-  - Solido
-  - PlataformaFogo
-  - HUD
-  - ItemRespawn
-  - OvoRespawn
+  - ground
+  - Crate
+  - Enemy
+  - Wall
+  - Obstacle
+  - Bullet
+  - BombPickup
+  - ExplosionFX
+  - Player1
+  - Player2
+  - Terrain
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
