@@ -20,8 +20,7 @@ public class LoadPlayer : MonoBehaviour
 	
 	}
 
-	void OnGUI() 
-	{
+	void OnGUI() {
 		GUI.Box(new Rect(Screen.width - 100, 0, 100, 25), Network.peerType.ToString());
 	}
 }
