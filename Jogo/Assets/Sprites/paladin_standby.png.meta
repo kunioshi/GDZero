@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: c207774e9e93b2a45aaaab4017188028
+TextureImporter:
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: paladin_standby_0
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 415
+        width: 125
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_1
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 415
+        width: 125
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_2
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 415
+        width: 124
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_3
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 415
+        width: 125
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_4
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 415
+        width: 125
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_5
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 415
+        width: 124
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_6
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 50
+        width: 125
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_7
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 50
+        width: 125
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_8
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 50
+        width: 124
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_9
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 50
+        width: 125
+        height: 237
+      alignment: 0
+      pivot: {x: 0, y: 0}
+    - name: paladin_standby_10
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 50
+        width: 125
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+  spritePackingTag: 
+  userData: 

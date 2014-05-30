@@ -70,6 +70,10 @@ public class Player : MonoBehaviour
 	public Sword AttackFront;
 	public Sword BottonAttack;
 	public Sword TopAttack;
+	public AudioClip[] blitAudio;
+
+	float contadorAudio = 0;
+	float contadorAudioMorte = 1;
 
 	void Start () 
 	{
@@ -131,12 +135,38 @@ public class Player : MonoBehaviour
 
 	private void GenereteAnimation()
 	{
+		contadorAudio += Time.deltaTime;
+		if (contadorAudio > 0.5) 
+		{
+			contadorAudio = 0;
+		}
+		if (contadorAudioMorte != 1) 
+		{
+			contadorAudioMorte += Time.deltaTime;
+		}
+		if (contadorAudioMorte > 1) 
+		{
+			contadorAudioMorte = 1;
+		}
 		animatorController.SetInteger("PlayerClass", (int)playerClass); 
 		animatorController.SetBool("IsRunning", IsRunning);
+		if (IsRunning && contadorAudio == 0) 
+		{
+			AudioSource.PlayClipAtPoint(blitAudio[0], transform.position);
+		}
 		animatorController.SetBool("IsJumping", IsJumping);
 		animatorController.SetBool("IsSliding", IsSliding);
 		animatorController.SetBool("IsAttacking", IsAttacking);
+		if (IsAttacking && contadorAudio == 0) 
+		{
+			AudioSource.PlayClipAtPoint(blitAudio[1], transform.position);
+		}
 		animatorController.SetBool("IsDyieng", Dyieng);
+		if (Dyieng && contadorAudioMorte == 1) 
+		{
+			AudioSource.PlayClipAtPoint(blitAudio[2], transform.position);
+			contadorAudioMorte = 0;
+		}
 		animatorController.SetBool("IsAttackingArrow", IsAttackingArrow);
 		animatorController.SetInteger("Direction", (int)this.Direction);
 		if (Bebado) {
@@ -244,10 +274,12 @@ public class Player : MonoBehaviour
 				break;
 
 			case "Ovo":
+				AudioSource.PlayClipAtPoint(blitAudio[3], transform.position);
 				GetEgg(collision.gameObject);
 				break;
 
 			case "Item":
+				AudioSource.PlayClipAtPoint(blitAudio[3], transform.position);
 				GetItem(collision.gameObject);
 				Destroy(collision.gameObject);
 				break;
