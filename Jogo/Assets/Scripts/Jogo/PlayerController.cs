@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
 	
 	void Update() 
 	{
-		Player.Move(Input.GetAxis("Horizontal"), Input.GetButton("Jump"));
-		Player.Attack(Input.GetAxis("Vertical"), Input.GetButton("Fire1"));
-		if (Input.GetButton("Fire2"))
+		Player.Move(Input.GetAxis("joystick 1 X"), Input.GetButton("joystick 1 button 0"));
+		Player.Attack(Input.GetAxis("joystick 1 Y"), Input.GetButton("joystick 1 button 2"));
+		if (Input.GetButton("joystick 1 button 3"))
 			Player.SpecialAttack();
 		//Player.Jump();
 

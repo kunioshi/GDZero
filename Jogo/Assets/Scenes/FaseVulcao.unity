@@ -570,6 +570,11 @@ MonoBehaviour:
   AttackFront: {fileID: 1060908206}
   BottonAttack: {fileID: 1285685942}
   TopAttack: {fileID: 135676265}
+  blitAudio:
+  - {fileID: 8300000, guid: 7277e49ca69eba7429af530426958120, type: 3}
+  - {fileID: 8300000, guid: dd6f8641fd8fceb4383e504a31bf7da8, type: 3}
+  - {fileID: 8300000, guid: 4487902e72962b54598b03117ed86ac2, type: 3}
+  - {fileID: 8300000, guid: cc67f49465d021149ad55ff2deecda24, type: 3}
 --- !u!95 &309042912
 Animator:
   serializedVersion: 2
