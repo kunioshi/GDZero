@@ -10,19 +10,47 @@ public class FaseVulcao : MonoBehaviour
 	public int ItemRespawn = 15;
 	public int FireBallTime = 10;
 	private int currentTime = 0;
-
-	public GameObject ItemPrefabs;
-	public GameObject[] ItemRespawnPoints;
 	private int indexItemRespawn = 0;
+
+	public GameObject ItemPrefab;
+	public Transform[] ItemRespawnPoints;
+	public GameObject PlayerPrefab;
+	public Transform[] PlayerRespawnPoints;
+	public GameObject EggPrefab;
+	public Transform EggRespawnPoint;
+
+	public HUDBar HUDBar;
 
 	void Start() 
 	{
+		CreateInitialObjects();
 		StartCoroutine(Timer());
 	}
 	
 	void Update() 
+	{	
+	}
+
+	private void CreateInitialObjects()
 	{
-	
+		CreateEgg();
+		CreatePlayer();
+	}
+
+	private void CreateEgg()
+	{
+		GameObject createEgg = (GameObject)CreateObject(EggPrefab, EggRespawnPoint.position);
+		Egg egg = createEgg.GetComponent<Egg>();
+		egg.SpawnPoint = EggRespawnPoint;
+	}
+
+	private void CreatePlayer()
+	{
+		GameObject createPlayer = (GameObject)CreateObject(PlayerPrefab, PlayerRespawnPoints[0].position);
+		Player player = createPlayer.GetComponent<Player>();
+		player.HUDBar = HUDBar;
+		player.playerClass = CharClass.Warrior;
+		player.LevelTime = this.GameTime;
 	}
 
 	private IEnumerator Timer() 
@@ -61,7 +89,7 @@ public class FaseVulcao : MonoBehaviour
 
 	private void RespawnItem() 
 	{
-		CreateObject(ItemPrefabs, ItemRespawnPoints[indexItemRespawn].transform.position);
+		CreateObject(ItemPrefab, ItemRespawnPoints[indexItemRespawn].position);
 		indexItemRespawn++;
 		if (ItemRespawnPoints.Length == indexItemRespawn)
 			indexItemRespawn = 0;
@@ -87,9 +115,9 @@ public class FaseVulcao : MonoBehaviour
 		Debug.Log("EndGame");
 	}
 
-	private void CreateObject(Object obj, Vector3 position)
+	private object CreateObject(Object obj, Vector3 position)
 	{
-		Instantiate(obj, position, Quaternion.identity);
+		return Instantiate(obj, position, Quaternion.identity);
 	}
 
 	private void OnGUI()

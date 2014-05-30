@@ -33,7 +33,8 @@ public class Player : MonoBehaviour
 	private Animator animatorController;
 	private int totalKills = 0;
 	private bool midAir = false;
-	private float percentual = 0.1f;
+	private float percentual = 0f;
+	private float eggTime = 0;
 	private Egg egg;
 
 	public float MovieSpeed = 5;
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour
 	public Transform Sight;
 	public Arrow ArrowPrefab;
 	public HUDBar HUDBar;
+	public float LevelTime;
 	
 	void Start () 
 	{
@@ -68,7 +70,9 @@ public class Player : MonoBehaviour
 	void Update () 
 	{
 		GenereteAnimation();
-		HUDBar.UpdateBar(playerClass, percentual);
+		HUDBar.UpdateBar(playerClass, eggTime/LevelTime);
+		if (WithEgg)
+			eggTime += Time.deltaTime;
 	}
 
 	private void GenereteAnimation()
@@ -199,7 +203,7 @@ public class Player : MonoBehaviour
 		}
 		else if (NormalShield)
 			NormalShield = false;
-		else 
+		else if (!Dyieng)
 			Die();
 	}
 
@@ -207,11 +211,14 @@ public class Player : MonoBehaviour
 	{
 		Dyieng = true;
 
-		if (WithEgg)
+		if (WithEgg) 
 		{
 			WithEgg = false;
 			egg.IsFlying = false;
-		}
+		} 
+		else if (eggTime >= 1)
+			eggTime--;
+
 	}
 
 	private void GetEgg(GameObject item) 
