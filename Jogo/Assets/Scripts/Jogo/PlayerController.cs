@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 	{
 		Player.Move(Input.GetAxis("Horizontal"), Input.GetButton("Jump"));
 		Player.Attack(Input.GetAxis("Vertical"), Input.GetButton("Fire1"));
+		if (Input.GetButton("Fire2"))
+			Player.SpecialAttack();
 		//Player.Jump();
 
 		//bool attack = Input.GetButton ("Fire1");

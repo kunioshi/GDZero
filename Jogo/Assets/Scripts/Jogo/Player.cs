@@ -31,12 +31,17 @@ public class Player : MonoBehaviour
 {
 	private Rigidbody2D rigidbody2d;
 	private Animator animatorController;
-	private int totalKills = 0;
+	private int totalDeaths = 0;
 	private bool midAir = false;
 	private float percentual = 0f;
 	private float eggTime = 0;
 	private Egg egg;
+	private float diengTime = 0;
+	private float jumpDirection = 0;
+	private float swordTime = 0;
+	public float arrowAttackTime = 0;
 
+	public bool On = false;
 	public float MovieSpeed = 5;
 	public float JumpSpeed = 7;
 	public CharClass playerClass = CharClass.Archer;
@@ -49,6 +54,7 @@ public class Player : MonoBehaviour
 	public bool DoubleShield = false;
 	public bool Bebado = false;
 	public bool Dyieng = false;
+	public bool hasBow = false;
 	public bool IsAttackingArrow = false;
 	public Direction Direction = Direction.Left;
 	public ParticleSystem[] DustParticles;
@@ -57,10 +63,10 @@ public class Player : MonoBehaviour
 	public GameObject DoubleShieldObject;
 	public Transform EggPlace;
 	public Transform Sight;
-	public Arrow ArrowPrefab;
+	public Transform Spawn;
+	public GameObject ArrowPrefab;
 	public HUDBar HUDBar;
-	public float LevelTime;
-	
+	public float LevelTime;	
 	public Sword AttackFront;
 	public Sword BottonAttack;
 	public Sword TopAttack;
@@ -74,7 +80,7 @@ public class Player : MonoBehaviour
 	void Update () 
 	{
 		GenereteAnimation();
-		HUDBar.UpdateBar(playerClass, eggTime/LevelTime);
+
 		if (WithEgg)
 			eggTime += Time.deltaTime;
 
@@ -88,6 +94,39 @@ public class Player : MonoBehaviour
 			else
 				AttackFront.On = true;
 		}
+
+		if (Dyieng) {
+			diengTime += Time.deltaTime;
+			if (diengTime > 1f)
+			{
+				Dyieng = false;
+				diengTime = 0;
+				Respawn();
+			}
+		}
+
+		if (IsAttackingArrow) {
+			arrowAttackTime += Time.deltaTime;
+			if (arrowAttackTime > 1f)
+			{
+				if (hasBow) {
+					CreateArrow();
+					hasBow = false;
+				}
+				if (arrowAttackTime > 1.5f)
+				{
+					IsAttackingArrow = false;
+					arrowAttackTime = 0;
+				}
+			}
+		}
+				
+		HUDBar.UpdateBar(playerClass, eggTime/LevelTime);
+	}
+
+	private void Respawn()
+	{
+		this.transform.position = Spawn.position;
 	}
 
 	private void GenereteAnimation()
@@ -115,109 +154,76 @@ public class Player : MonoBehaviour
 		//	Invoke("createArrow", 0.5f);
 	}
 
-	private void createArrow () 
+	private void CreateArrow() 
 	{
-		Arrow arrow = (Arrow)Instantiate(ArrowPrefab, Sight.position, Sight.rotation);
-		arrow.transform.localScale = gameObject.transform.localScale;	
+		GameObject go = (GameObject)Instantiate(ArrowPrefab, Sight.position, Sight.rotation);
+		Arrow arrow = go.GetComponent<Arrow> ();
+		arrow.transform.localScale = Sight.transform.localScale;	
 	}
 
-	private float jumpDirection = 0;
+
 	public void Move(float direction, bool jump)
 	{
-		float velocityX = MovieSpeed;//rigidbody2d.velocity.X;
-		//float velocityY = rigidbody2d.velocity.y;	
+		if (On) {
+			float velocityX = MovieSpeed;
 
-		if(jump && (!midAir || IsSliding))
-		{
-			IsJumping = true;
-			midAir = true;
-			IsSliding = false;
-			//velocityY = JumpSpeed;
-			rigidbody2d.velocity = new Vector3(rigidbody2d.velocity.x, JumpSpeed, 0.0f);
+			if (jump && (!midAir || IsSliding)) {
+					IsJumping = true;
+					midAir = true;
+					IsSliding = false;
+					rigidbody2d.velocity = new Vector3 (rigidbody2d.velocity.x, JumpSpeed, 0.0f);
 
-			jumpDirection = transform.localScale.x;
-		}
-
-		IsRunning = (direction != 0);
-		//velocityX = MovieSpeed * direction;
-		if(direction != 0)
-		{
-			if (midAir && transform.localScale.x != jumpDirection)
-				velocityX /= 2;
-
-			if(direction < 0)
-			{
-				this.Direction = Direction.Left;
-				if (IsSliding)
-					transform.localScale = new Vector3(0.6641114f, transform.localScale.y, transform.localScale.z);
-				else 
-					transform.localScale = new Vector3(-0.6641114f, transform.localScale.y, transform.localScale.z);
-
-			}
-			else if(direction > 0)
-			{
-				this.Direction = Direction.Right;
-				if (IsSliding)
-					transform.localScale = new Vector3(-0.6641114f, transform.localScale.y, transform.localScale.z);
-				else 
-					transform.localScale = new Vector3(0.6641114f, transform.localScale.y, transform.localScale.z);
+					jumpDirection = transform.localScale.x;
 			}
 
+			IsRunning = (direction != 0);
+			if (direction != 0) {
+					if (midAir && transform.localScale.x != jumpDirection)
+							velocityX /= 2;
 
+					if (direction < 0) {
+							this.Direction = Direction.Left;
+							if (IsSliding)
+									transform.localScale = new Vector3 (0.6641114f, transform.localScale.y, transform.localScale.z);
+							else 
+									transform.localScale = new Vector3 (-0.6641114f, transform.localScale.y, transform.localScale.z);
+
+					} else if (direction > 0) {
+							this.Direction = Direction.Right;
+							if (IsSliding)
+									transform.localScale = new Vector3 (-0.6641114f, transform.localScale.y, transform.localScale.z);
+							else 
+									transform.localScale = new Vector3 (0.6641114f, transform.localScale.y, transform.localScale.z);
+					}
+
+
+			}
+			if (!IsSliding)
+					rigidbody2d.velocity = new Vector3 (velocityX * direction, rigidbody2d.velocity.y, 0.0f);
 		}
-		if (!IsSliding)
-			rigidbody2d.velocity = new Vector3(velocityX * direction, rigidbody2d.velocity.y, 0.0f);
 	}
-
-	private float swordTime = 0;
 
 	public void Attack(float direction, bool attacking)
 	{
-		if (attacking) 
-		{
-			IsAttacking = true;
-			swordTime = 0;
-		}
-		else if (swordTime > 0.5f) 
-			IsAttacking = false;
+		if (On) {
+			if (attacking) {
+					IsAttacking = true;
+					swordTime = 0;
+			} else if (swordTime > 0.5f) 
+					IsAttacking = false;
 
-		if (direction > 0)
-				this.Direction = Direction.Up;
-		else if (direction < 0)
-				this.Direction = Direction.Down;
-
-		/*
-		if (!animatorController.GetCurrentAnimatorStateInfo(0).IsName("WarriorAttackingFront") && !animatorController.GetCurrentAnimatorStateInfo(0).IsName("WarriorStandAtackArrow")) {
-			attacking = false;
-			animatorController.SetBool ("attacking", false);
+			if (direction > 0)
+					this.Direction = Direction.Up;
+			else if (direction < 0)
+					this.Direction = Direction.Down;
 		}
-		
-		if (attacking)
-			swordTime += Time.deltaTime;
-		else
-			swordTime = 0;
+	}
 
-		if (attack && !attacking) {
-			attacking = true;
-			animatorController.SetBool ("attacking", true);
-		}
-		
-		if(swordTime > 0.1f)
-		{
-
-			Ray swordRange = new Ray (transform.position, transform.right);
-			RaycastHit swordHit;
-			Physics.Raycast (swordRange, out swordHit, 1.2f);
-			
-			if(swordHit.rigidbody != null){
-				swordHit.rigidbody.AddForce(transform.right*10,ForceMode.Impulse);
-			}
-			
-			//swordTime = 0;
-			//animatorController.SetBool("attacking",false);
-			//Instantiate(shot,transform.position,transform.rotation);
-		}
-		*/
+	public void SpecialAttack()
+	{
+		if (On) 
+			if (hasBow)
+				IsAttackingArrow = true;
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) 
@@ -255,7 +261,6 @@ public class Player : MonoBehaviour
 
 	public void Hit()
 	{
-		Debug.Log ("hit");
 		rigidbody2d.velocity = new Vector3(rigidbody2d.velocity.x, 3f, 0.0f);
 		if (DoubleShield) 
 		{
@@ -270,16 +275,16 @@ public class Player : MonoBehaviour
 
 	private void Die() 
 	{
-		Dyieng = true;
-
 		if (WithEgg) 
 		{
 			WithEgg = false;
 			egg.IsFlying = false;
 		} 
 		else if (eggTime >= 1)
-			eggTime--;
+			eggTime -= totalDeaths;
 
+		totalDeaths++;
+		Dyieng = true;
 	}
 
 	private void GetEgg(GameObject item) 
@@ -300,6 +305,10 @@ public class Player : MonoBehaviour
 			case ItemType.LargeShield:
 				DoubleShield = true;
 				break;
+
+			case ItemType.Bow:
+				hasBow = true;
+				break;
 		}
 	}
 
@@ -307,45 +316,6 @@ public class Player : MonoBehaviour
 	{
 		foreach(ParticleSystem particle in DustParticles)
 			particle.Play();
-	}
-
-	
-	public void Run(float direction)
-	{
-		IsRunning = (direction != 0);
-		if(direction < 0)
-		{
-			this.Direction = Direction.Left;
-			if (IsSliding)
-				transform.localScale = new Vector3(0.6641114f, transform.localScale.y, transform.localScale.z);
-			else
-				transform.localScale = new Vector3(-0.6641114f, transform.localScale.y, transform.localScale.z);
-		}
-		else if (direction > 0)
-		{
-			this.Direction = Direction.Right;
-			if (IsSliding)
-				transform.localScale = new Vector3(-0.6641114f, transform.localScale.y, transform.localScale.z);
-			else
-				transform.localScale = new Vector3(0.6641114f, transform.localScale.y, transform.localScale.z);
-		}
-		
-		rigidbody2d.velocity = new Vector3(MovieSpeed * direction, rigidbody2d.velocity.y, 0.0f);
-	}
-	
-	public void Jump()
-	{
-		if (!midAir) 
-		{
-			IsJumping = true;
-			midAir = true;
-			IsSliding = false;
-			rigidbody2d.velocity = new Vector3(rigidbody2d.velocity.x, JumpSpeed, 0.0f);
-			
-			//PlayJumpingDust();
-			
-			//jumpDirection = transform.localScale.x;
-		}
 	}
 
 }

@@ -9,6 +9,7 @@ public class Egg : MonoBehaviour
 	private Transform EggPlace;
 	public Transform SpawnPoint;
 	public bool IsFlying = false;
+	public bool IsBaby = false;
 
 	void Start () 
 	{
@@ -20,6 +21,8 @@ public class Egg : MonoBehaviour
 	void Update() 
 	{
 		animatorController.SetBool ("IsFlying", IsFlying);
+		animatorController.SetBool ("IsBaby", IsBaby);
+
 		boxCollider.isTrigger = IsFlying;
 		rigidbody2d.isKinematic = IsFlying;
 		if (IsFlying)

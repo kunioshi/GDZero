@@ -483,9 +483,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbcd572fff42f34eb12a7823088074b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrowAttackTime: 0
   MovieSpeed: 5
   JumpSpeed: 11
-  playerClass: 5
+  playerClass: 1
   IsRunning: 0
   IsJumping: 0
   IsSliding: 0
@@ -495,6 +496,7 @@ MonoBehaviour:
   DoubleShield: 0
   Bebado: 0
   Dyieng: 0
+  hasBow: 0
   IsAttackingArrow: 0
   Direction: 4
   DustParticles:
@@ -506,7 +508,8 @@ MonoBehaviour:
   DoubleShieldObject: {fileID: 100008}
   EggPlace: {fileID: 400022}
   Sight: {fileID: 400018}
-  ArrowPrefab: {fileID: 11400000, guid: 23e51af519803434c91ad2fd1dee7814, type: 2}
+  Spawn: {fileID: 0}
+  ArrowPrefab: {fileID: 100000, guid: 23e51af519803434c91ad2fd1dee7814, type: 2}
   HUDBar: {fileID: 0}
   LevelTime: 0
   AttackFront: {fileID: 11400002}

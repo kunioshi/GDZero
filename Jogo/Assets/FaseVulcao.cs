@@ -11,6 +11,7 @@ public class FaseVulcao : MonoBehaviour
 	public int FireBallTime = 10;
 	private int currentTime = 0;
 	private int indexItemRespawn = 0;
+	private Player Player1;
 
 	public GameObject ItemPrefab;
 	public Transform[] ItemRespawnPoints;
@@ -51,6 +52,8 @@ public class FaseVulcao : MonoBehaviour
 		player.HUDBar = HUDBar;
 		player.playerClass = CharClass.Warrior;
 		player.LevelTime = this.GameTime;
+		player.Spawn = PlayerRespawnPoints[0];
+		Player1 = player;
 	}
 
 	private IEnumerator Timer() 
@@ -62,14 +65,14 @@ public class FaseVulcao : MonoBehaviour
 		
 		for (currentTime = GameTime; currentTime > 0; currentTime--) 
 		{
-			if (currentTime % FirePlataformTime == 0)
-				FirePlataform();
+			//if (currentTime % FirePlataformTime == 0)
+			//	FirePlataform();
 
 			if (currentTime % ItemRespawn == 0)
 				RespawnItem();
 			
-			if (currentTime % FireBallTime == 0)
-				FireBall();
+			//if (currentTime % FireBallTime == 0)
+			//	FireBall();
 			
 			yield return new WaitForSeconds(1);
 		}
@@ -84,7 +87,7 @@ public class FaseVulcao : MonoBehaviour
 
 	private void StartGame()
 	{
-		Debug.Log("StartGame");
+		Player1.On = true;
 	}
 
 	private void RespawnItem() 
