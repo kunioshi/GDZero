@@ -7,7 +7,8 @@ var firePlataformTime = 30;
 var itemRespawn = 15;
 var fireBallTime = 10;
 var _currentTime = 0;
-
+var ItemPrefab : GameObject;
+var ItemSpawnPoints : GameObject[];
 
 function Start () {
 	for (_currentTime = preGameTime; _currentTime > 0; _currentTime--)
@@ -44,8 +45,9 @@ function FirePlataform() {
 Debug.Log("FirePlataform");
 }
 
-function RespawnItem() {
-Debug.Log("RespawnItem");
+function RespawnItem() 
+{
+	//Random.Range(0 ItemSpawnPoints.Count);
 }
 
 function FireBall() {
