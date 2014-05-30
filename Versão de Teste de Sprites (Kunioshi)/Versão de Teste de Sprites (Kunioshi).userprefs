@@ -2,9 +2,8 @@
   <MonoDevelop.Ide.Workspace />
   <MonoDevelop.Ide.Workbench ActiveDocument="..\Jogo\Assets\Scripts\Jogo\Player.cs">
     <Files>
-      <File FileName="..\Jogo\Assets\FaseVulcao.cs" Line="44" Column="36" />
-      <File FileName="..\Jogo\Assets\Scripts\Jogo\Player.cs" Line="207" Column="4" />
-      <File FileName="..\Jogo\Assets\Scripts\Jogo\Egg.cs" Line="53" Column="1" />
+      <File FileName="..\Jogo\Assets\Scripts\Character.cs" Line="134" Column="1" />
+      <File FileName="..\Jogo\Assets\Scripts\Jogo\Player.cs" Line="188" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

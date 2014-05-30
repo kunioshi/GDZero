@@ -61,6 +61,10 @@ public class Player : MonoBehaviour
 	public HUDBar HUDBar;
 	public float LevelTime;
 	
+	public Sword AttackFront;
+	public Sword BottonAttack;
+	public Sword TopAttack;
+
 	void Start () 
 	{
 		rigidbody2d = this.GetComponent<Rigidbody2D>();
@@ -73,6 +77,17 @@ public class Player : MonoBehaviour
 		HUDBar.UpdateBar(playerClass, eggTime/LevelTime);
 		if (WithEgg)
 			eggTime += Time.deltaTime;
+
+		TopAttack.On = BottonAttack.On = AttackFront.On = false;
+		if (IsAttacking) {
+			swordTime += Time.deltaTime;
+			if (this.Direction == Direction.Up)
+				TopAttack.On = true;
+			else if (this.Direction == Direction.Down)
+				BottonAttack.On = true;
+			else
+				AttackFront.On = true;
+		}
 	}
 
 	private void GenereteAnimation()
@@ -154,10 +169,55 @@ public class Player : MonoBehaviour
 			rigidbody2d.velocity = new Vector3(velocityX * direction, rigidbody2d.velocity.y, 0.0f);
 	}
 
+	private float swordTime = 0;
 
-	public void Attack(bool attacking)
+	public void Attack(float direction, bool attacking)
 	{
-		IsAttacking = attacking;
+		if (attacking) 
+		{
+			IsAttacking = true;
+			swordTime = 0;
+		}
+		else if (swordTime > 0.5f) 
+			IsAttacking = false;
+
+		if (direction > 0)
+				this.Direction = Direction.Up;
+		else if (direction < 0)
+				this.Direction = Direction.Down;
+
+		/*
+		if (!animatorController.GetCurrentAnimatorStateInfo(0).IsName("WarriorAttackingFront") && !animatorController.GetCurrentAnimatorStateInfo(0).IsName("WarriorStandAtackArrow")) {
+			attacking = false;
+			animatorController.SetBool ("attacking", false);
+		}
+		
+		if (attacking)
+			swordTime += Time.deltaTime;
+		else
+			swordTime = 0;
+
+		if (attack && !attacking) {
+			attacking = true;
+			animatorController.SetBool ("attacking", true);
+		}
+		
+		if(swordTime > 0.1f)
+		{
+
+			Ray swordRange = new Ray (transform.position, transform.right);
+			RaycastHit swordHit;
+			Physics.Raycast (swordRange, out swordHit, 1.2f);
+			
+			if(swordHit.rigidbody != null){
+				swordHit.rigidbody.AddForce(transform.right*10,ForceMode.Impulse);
+			}
+			
+			//swordTime = 0;
+			//animatorController.SetBool("attacking",false);
+			//Instantiate(shot,transform.position,transform.rotation);
+		}
+		*/
 	}
 
 	void OnCollisionEnter2D(Collision2D collision) 
@@ -193,8 +253,9 @@ public class Player : MonoBehaviour
 		IsSliding = false;
 	}
 
-	private void Hit()
+	public void Hit()
 	{
+		Debug.Log ("hit");
 		rigidbody2d.velocity = new Vector3(rigidbody2d.velocity.x, 3f, 0.0f);
 		if (DoubleShield) 
 		{

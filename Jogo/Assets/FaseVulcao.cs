@@ -97,12 +97,12 @@ public class FaseVulcao : MonoBehaviour
 	
 	private void FireBall()
 	{
-		Debug.Log("FireBall");
+
 	}
 
 	private void FirePlataform()
 	{
-		Debug.Log("FirePlataform");
+
 	}
 
 	private void StartDragonRush()
